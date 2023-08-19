@@ -1,0 +1,259 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<div th:fragment="modals_addSectionModals">
+
+
+<!--	<div class="modal fade group-modal" id="add-about" data-bs-backdrop="static"-->
+<!--		 data-bs-keyboard="false" tabindex="-1"-->
+<!--		 aria-labelledby="staticBackdropLabel1" aria-hidden="false">-->
+<!--		<div class="modal-dialog modal-lg  modal-dialog-centered">-->
+<!--			<div class="modal-content">-->
+<!--				<div class="modal-header">-->
+<!--					<h5 class="modal-title" id="staticBackdropLabel1">Add About</h5>-->
+
+<!--					<button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--				</div>-->
+
+<!--				<div class="modal-body">-->
+
+
+<!--					<div class="form-group mb-1 p-1">-->
+<!--						<label for="about" class="ps-1 pb-2">You can write about-->
+<!--							your years of experience, industry, or skills. People also talk-->
+<!--							about their achievements or previous job experiences.*</label>-->
+<!--						<textarea name="about" id="about" cols="100" rows="10">${about}</textarea>-->
+<!--					</div>-->
+
+
+<!--				</div>-->
+<!--				<div class="modal-footer">-->
+<!--					<button type="submit" class="btn btn-primary">Save changes</button>-->
+<!--				</div>-->
+
+<!--			</div>-->
+<!--		</div>-->
+<!--	</div> -->
+
+
+
+
+
+	<!-- SKILL MODAL -->
+	<div class="modal fade group-modal" id="add-skill" data-bs-backdrop="static"
+		 data-bs-keyboard="false" tabindex="-1"
+		 aria-labelledby="staticBackdropLabel2" aria-hidden="false">
+		<div class="modal-dialog modal-lg  modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="staticBackdropLabel2">Add Skill</h5>
+
+					<button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+
+				<form th:action="add-skill" method="post">
+
+					<div class="modal-body">
+
+						<div class="form-group mb-1 p-1">
+							<label for="skill_name" class="ps-1 pb-2">Skill*</label>
+							<input type="text" class="form-control inp-txt-light p-2 ps-3" name="skill_name" th:name="skillName" id="skill_name" required>
+						</div>
+
+
+					</div>
+					<div class="modal-footer">
+						<button type="submit" class="btn btn-primary">Save changes</button>
+					</div>
+
+				</form>
+
+			</div>
+		</div>
+	</div>
+
+
+	<!-- EDUCATION MODAL -->
+	<div class="modal fade group-modal" id="add-education" data-bs-backdrop="static"
+		 data-bs-keyboard="false" tabindex="-1"
+		 aria-labelledby="staticBackdropLabel3" aria-hidden="false">
+		<div class="modal-dialog modal-lg  modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="staticBackdropLabel3">Add Education</h5>
+
+					<button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+
+				<form th:action="add-education" method="post">
+
+					<div class="modal-body">
+
+
+						<div class="form-group mb-1 p-1">
+							<label for="university_name" class="ps-1 pb-2">University*</label> <input
+								type="text" class="form-control inp-txt-light p-2 ps-3"
+								name="university_name" th:name="universityName" id="university_name" required>
+						</div>
+
+
+						<div class="form-group mb-1 p-1">
+							<label for="majored" class="ps-1 pb-2">Majored In*</label> <input
+								type="text" class="form-control inp-txt-light p-2 ps-3"
+								name="majored" required id="majored" th:name="majored">
+						</div>
+
+
+						<div
+								class="form-group col-lg-8 mb-1 p-1 d-flex justify-content-start">
+
+							<div class="col-lg-5 me-3">
+								<label for="ed_startdate" class="ps-1 pb-2">Start Date*</label> <input
+									type="date" class="form-control me-3" name="ed_startdate" th:name="startDate"  id="ed_startdate" required>
+							</div>
+
+							<div class="col-lg-5 ">
+								<label for="ed_enddate" class="ps-1 pb-2">End Date*</label> <input
+									type="date" class="form-control me-3" name="ed_enddate" th:name="endDate" id="ed_enddate" required>
+							</div>
+
+						</div>
+
+
+					</div>
+
+					<div class="modal-footer">
+						<button type="submit" class="btn btn-primary">Save changes</button>
+					</div>
+
+				</form>
+
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<!-- LICENSES MODAL -->
+	<div class="modal fade group-modal" id="add-licenses" data-bs-backdrop="static"
+		 data-bs-keyboard="false" tabindex="-1"
+		 aria-labelledby="staticBackdropLabel4" aria-hidden="false">
+		<div class="modal-dialog modal-lg  modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="staticBackdropLabel4">Add Licenses & Certifications</h5>
+
+					<button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+
+				<form th:action="add-license" method="post">
+
+
+					<div class="modal-body">
+
+
+						<div class="form-group mb-1 p-1">
+							<label for="licenses_name" class="ps-1 pb-2">Licenses Name*</label> <input
+								type="text" class="form-control inp-txt-light p-2 ps-3"
+								name="licenses_name" id="licenses_name" th:name="licenseName" required>
+						</div>
+
+						<div class="form-group mb-1 p-1">
+							<label for="organization" class="ps-1 pb-2">Organization*</label>
+							<input type="text" class="form-control inp-txt-light p-2 ps-3"
+								   name="organization" id="organization" th:name="organization" required>
+						</div>
+
+						<div class="form-group mb-1 p-1">
+							<label for="licenses_date" class="ps-1 pb-2">Date Issued*</label>
+							<input type="date"  class="form-control inp-txt-light p-2 ps-3" name="licenses_date" th:name="dateIssued" id="licenses_date" required>
+						</div>
+
+
+					</div>
+
+
+					<div class="modal-footer">
+						<button type="submit" class="btn btn-primary">Save changes</button>
+					</div>
+
+				</form>
+
+
+
+
+			</div>
+		</div>
+	</div>
+
+
+
+	<!-- EXPERIENCE MODAL -->
+	<div class="modal fade group-modal" id="add-experience" data-bs-backdrop="static"
+		 data-bs-keyboard="false" tabindex="-1"
+		 aria-labelledby="staticBackdropLabel5" aria-hidden="false">
+		<div class="modal-dialog modal-lg  modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="staticBackdropLabel5">Add Experience</h5>
+					<!-- <a href="profile" class="text-decoration-none">
+						<button type="button" class="btn-close" data-bs-dismiss="modal"
+							aria-label="Close"></button>
+					</a> -->
+					<button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+
+					<h3>Experience are not avaible at this moment</h3>
+
+					<!-- <div class="form-group mb-1 p-1">
+                        <label for="" class="ps-1 pb-2">Position*</label> <input
+                            type="text" class="form-control inp-txt-light p-2 ps-3"
+                            name="position" >
+                    </div>
+
+                    <div class="form-group mb-1 p-1">
+                        <label for="" class="ps-1 pb-2">Type of Work*</label> <input
+                            type="text" class="form-control inp-txt-light p-2 ps-3"
+                            name="work-type" >
+                    </div>
+
+                    <div class="form-group mb-1 p-1">
+                        <label for="" class="ps-1 pb-2">Company Name*</label> <input
+                            type="text" class="form-control inp-txt-light p-2 ps-3"
+                            name="company-name" >
+                    </div>
+
+
+                    <div
+                        class="form-group col-lg-8 mb-1 p-1 d-flex justify-content-start">
+
+                        <div class="col-lg-5 me-3">
+                            <label for="" class="ps-1 pb-2">Start Date*</label> <input
+                                type="date" class="form-control me-3" name="start-date" >
+                        </div>
+
+                        <div class="col-lg-5 ">
+                            <label for="" class="ps-1 pb-2">End Date*</label> <input
+                                type="date" class="form-control me-3" name="end-date" >
+                        </div>
+
+                    </div> -->
+
+				</div>
+				<div class="modal-footer">
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+</div>
+
+
+
+	
+
+
+

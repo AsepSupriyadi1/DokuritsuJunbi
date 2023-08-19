@@ -1,0 +1,71 @@
+.container-login {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url("../img/u1\ \(1\).png");
+}
+
+.container {
+    width: 400px;
+    text-align: center;
+    color: white;
+}
+
+.container p>a {
+    color: whitesmoke;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    height: 250px;
+    width: 100%;
+    justify-content: space-between;
+    text-align: right;
+}
+
+
+form input:focus {
+    border: none;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.358);
+    border: 2px solid white;
+}
+
+form input::placeholder {
+    color: white;
+}
+
+form input {
+    width: 100%;
+    padding: 15px 40px;
+    background-color: rgba(255, 254, 254, 0.405);
+    border: none;
+    border-radius: 50px;
+    color: white;
+}
+
+form a {
+    text-decoration: none;
+}
+
+form button {
+    padding: 12px 40px;
+    background-color: #2096FF;
+    color: white;
+    border: none;
+    border-radius: 50px;
+}
+
+
+.errorMsg {
+    padding: 5px 10px;
+    color: red;
+    display: block;
+    width: fit-content;
+    margin: 10px auto;
+    background-color: white;
+}

@@ -1,0 +1,191 @@
+body {
+
+    min-height: 100vh;
+    background: url(../img/bg-01.jpg);
+    background-color: #25364ca9;
+    background-blend-mode: color-burn;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+
+/* BTN NAVIGATION */
+.navigation {
+
+    max-width: 100%;
+    background-color: #25364ca9;
+    color: rgba(255, 255, 255, 0.738);
+
+}
+
+.active {
+    background-color: #485d78cd;
+}
+
+
+
+/* TAB */
+/* BTN TAB */
+.btn-tab {
+
+    background-color: #5b779cdc;
+    color: rgba(255, 255, 255, 0.832);
+    border: 1px solid rgba(255, 255, 255, 0.288);
+    border-radius: 0;
+
+}
+
+
+.tab-container {
+    background-color: #3b4a5b;
+    display: none;
+}
+
+/* end of tab */
+
+
+
+.navigation:hover {
+
+    background-color: #25364cb7;
+    color: rgba(255, 255, 255, 0.897);
+
+}
+
+
+.right-side {
+    background-color: #354964a9;
+    max-height: 370px;
+    overflow: auto;
+}
+
+
+
+
+.dash-card {
+    background-color: #f9f9f98a;
+}
+
+
+.icon {
+
+    width: 70px;
+    height: 70px;
+    background-color: #354964a9;
+    font-size: 2.5em;
+    text-align: center;
+    border-radius: 50%;
+
+}
+
+
+/* BUTTON */
+
+.mybtn-success {
+    background-color: rgb(101, 208, 119);
+}
+
+.mybtn-danger {
+    background-color: rgb(208, 119, 101);
+}
+
+.mybtn-details {
+    background-color: #6889ac;
+}
+
+.dash-navigation-container {
+    height: 300px;
+    overflow-y: auto;
+}
+
+
+/* width */
+.dash-navigation-container::-webkit-scrollbar {
+    width: 3px;
+}
+
+/* Track */
+.dash-navigation-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+.dash-navigation-container::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+.dash-navigation-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+
+
+
+
+@media only screen and (max-width: 800px) {
+
+    .dash-navigation-container {
+        height: max-content;
+        overflow-x: auto;
+    }
+
+
+    .dash-navigation {
+        width: max-content;
+        overflow-x: auto;
+        margin: 0;
+        padding-bottom: 20px;
+    }
+
+
+    .dash-navigation>a {
+
+        padding: 0;
+        margin: 0;
+        width: 200px;
+        margin: 0 10px;
+
+    }
+
+
+    .right-side {
+        margin-top: 20px;
+        overflow: visible;
+        max-height: fit-content;
+        padding: 0;
+    }
+
+
+
+    .dash-card {
+        margin: 10px 0;
+
+    }
+
+
+    .btn-nav {
+        width: 280px;
+        margin: 5px 0;
+        padding: 10px 0px;
+    }
+
+
+    /* table */
+
+
+
+
+    /* TAB */
+
+    .tab-nav-container {
+        overflow-x: auto;
+    }
+
+
+
+
+
+}

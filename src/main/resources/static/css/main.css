@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Gothic+A1:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+body {
+    background-color: #dcedfae7;
+    position: relative !important;
+}
+
+.main-section {
+    min-height: 50vh;
+}
+
+
+.inp-txt-light::placeholder {
+    color: rgb(127, 127, 127);
+}
+
+
+
+/* GRADIENT */
+.gradient-1 {
+    background: rgb(255, 255, 255);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 1) 17%, rgba(235, 235, 235, 1) 75%);
+}
+
+
+/* HOVER */
+.shrink:hover {
+    animation: scale-down-center .10s cubic-bezier(.25, .46, .45, .94) both;
+}
+
+.navbar {
+    width: 100%;
+    z-index: 1 !important;
+    position: sticky !important;
+    top: 0 !important;
+}
+
+.cs-p {
+    cursor: pointer;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+
+    .mynavbar {
+        flex-direction: column-reverse;
+    }
+
+    .mynavbar>form,
+    ul li {
+        padding: 10px 0px;
+    }
+}
+
+@keyframes scale-down-center {
+    0% {
+        transform: scale(1)
+    }
+
+    100% {
+        transform: scale(0.75)
+    }
+}
+
+
+
+
+/* JOBS PAGE */
+
+.jobContainer {
+
+
+    min-height: 200px;
+    max-height: 500px;
+    overflow-y: auto;
+
+}
+
+.jobContainer::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+.jobContainer::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+.jobContainer::-webkit-scrollbar-thumb {
+    background: #9b9b9b;
+}
+
+/* Handle on hover */
+.jobContainer::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.jobItems {
+    transition: 0.2s;
+}
+
+.jobItems:hover {
+    cursor: pointer;
+    background-color: rgba(226, 226, 226, 0.325);
+}

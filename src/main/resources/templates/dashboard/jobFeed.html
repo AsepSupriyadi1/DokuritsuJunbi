@@ -1,0 +1,181 @@
+<!doctype html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<div th:replace="~{fragment/head :: html_head}"></div>
+
+<body>
+
+    <div th:replace="~{fragment/navbar :: my_navbar}"></div>
+
+    <div class="container-fluid py-5" style="background-color: #F0F2F5;">
+
+        <div class="container">
+
+            <div class="pb-2">
+                <h1 class="fw-bold">Jobs Feed</h1>
+            </div>
+
+            <!-- ------------------------------------- FILTER JOB FEEDS --------------------------------- -->
+            <div class="bg-light p-4 rounded border border-2">
+                <h5 class="m-0 mb-3">Filter Jobs</h5>
+
+
+                <form action="">
+                    <div class="row d-flex align-items-end justify-content-between gx-1">
+
+                        <div class="col">
+                            <label for="jobTitle" class="mb-2">Job Title : </label>
+                            <input type="text" id="jobTitle" th:name="jobTitle" class="form-control" placeholder="Enter the job's title...">
+                        </div>
+
+                        <div class="col">
+
+                            <label for="jobType" class="mb-2">Job's Type : </label>
+                            <select th:name="jobType" id="jobType" class="form-control">
+                                <option>- Select Job's type -</option>
+                                <option value="FULL_TIME">Full Time</option>
+                                <option value="PART_TIME">Part Time</option>
+                                <option value="REMOTE">Remote</option>
+                                <option value="FREELANCE">Freelancer</option>
+                            </select>
+
+                        </div>
+
+                        <div class="col">
+
+                            <label for="jobCountry" class="mb-2">Country : </label>
+                            <select th:name="jobCountry" id="jobCountry" class="form-control">
+                                <option>- Select Country -</option>
+                                <option value="Indonesia">Indonesia</option>
+                                <option value="Singapore">Singapore</option>
+                                <option value="Malaysia">Malaysia</option>
+                                <option value="Philippines">Philippines</option>
+                            </select>
+
+                        </div>
+
+                        <div class="col-1">
+                            <button class="btn btn-primary w-100"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        </div>
+
+
+
+                    </div>
+
+                </form>
+            </div>
+            <!-- ------------------------------------- END OF FILTER JOB FEEDS --------------------------------- -->
+
+            <div class="rounded  my-4 ">
+
+                <h2 class="fw-bold mb-3 text-center text-lg-start fs-4 pb-3 border-bottom border-1">Recommended For You
+                </h2>
+
+
+                <!-- ------------------------------- ALL CARDS ----------------------------------------- -->
+                <div th:if="${allJobs != null || searchedResult != null}" class="row g-3">
+
+
+                    <!-- -------------------- REPEATED ELEMENTS -------------------------- -->
+                    <div class="col-lg-4" th:if="${allJobs != null}" th:each="job : ${allJobs}">
+                        <a href="" class="text-decoration-none text-dark">
+                            <div class=" bg-light border border- border-2  p-4 ">
+
+
+                                <div class="d-flex align-items-center">
+                                    <img src="img/defaultCompany.png" alt="companyLogo"
+                                        style="height: 60px; width: 60px; object-fit: cover;">
+                                    <div class="ps-3">
+                                        <h6 class="m-0">[[${job.getJobTitle()}]]</h6>
+                                        <small class="text-primary fw-bold">[[${job.getCompany().getCompanyName()}]]</small>
+                                    </div>
+                                </div>
+
+                                <div class="mt-3">
+                                    <table>
+                                        <tr>
+                                            <td><i class="fa-solid fa-location-dot pe-2"></i></td>
+                                            <td><small>[[${job.getCompany().getCompanyAddress()}]]</small></td>
+                                        </tr>
+                                        <tr>
+                                            <td><i class="fa fa-briefcase" style="font-size: 12px;"></i></td>
+                                            <td><small>[[${job.getJobType()}]]</small></td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div class="mt-1 text-end">
+                                    <small class="text-secondary"><i class="fa-regular fa-clock"></i> [[${job.getTimeAgo()}]]</small>
+                                </div>
+
+
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-lg-4" th:if="${allJobs == null}" th:each="job : ${searchedResult}">
+                        <a href="" class="text-decoration-none text-dark">
+                            <div class=" bg-light border border- border-2  p-4 ">
+
+
+                                <div class="d-flex align-items-center">
+                                    <img src="img/defaultCompany.png" alt="companyLogo"
+                                         style="height: 60px; width: 60px; object-fit: cover;">
+                                    <div class="ps-3">
+                                        <h6 class="m-0">[[${job.getJobTitle()}]]</h6>
+                                        <small class="text-primary fw-bold">[[${job.getCompany().getCompanyName()}]]</small>
+                                    </div>
+                                </div>
+
+                                <div class="mt-3">
+                                    <table>
+                                        <tr>
+                                            <td><i class="fa-solid fa-location-dot pe-2"></i></td>
+                                            <td><small>[[${job.getCompany().getCompanyAddress()}]]</small></td>
+                                        </tr>
+                                        <tr>
+                                            <td><i class="fa fa-briefcase" style="font-size: 12px;"></i></td>
+                                            <td><small>[[${job.getJobType()}]]</small></td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div class="mt-1 text-end">
+                                    <small class="text-secondary"><i class="fa-regular fa-clock"></i> [[${job.getTimeAgo()}]]</small>
+                                </div>
+
+
+                            </div>
+                        </a>
+                    </div>
+                    <!-- -------------------- END OF REPEATED ELEMENTS -------------------------- -->
+
+                </div>
+                <!-- ------------------------------- ENDS OF ALL CARDS ----------------------------------------- -->
+
+
+                <!-- ---------------------------- NOT FOUND SECTION --------------------------- -->
+                <div class="row g-3 px-2"  th:if="${allJobs == null && searchedResult == null}">
+                    <div class=" bg-light border border-2  py-5 text-center">
+                        <h5>Not Results Found</h5>
+                        <p>Try shortening or rephrasing your filter.</p>
+                        <img src="img/confuse.png" alt="noResults" style="width: 40%;">
+                    </div>
+                </div>
+                <!-- ---------------------------- END OF NOT FOUND SECTION --------------------------- -->
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <div th:replace="~{component/footer :: html_footer}"></div>
+
+</body>
+
+</html>

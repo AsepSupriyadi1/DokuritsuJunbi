@@ -1,0 +1,99 @@
+<!doctype html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="~{administrator/admin_source :: dashboard_source}"></head>
+
+<body style="
+background: url(img/bg-01.jpg);
+min-height: 100vh;
+background-color: #25364ca9;
+background-blend-mode: color-burn;
+background-position: center;
+background-size: cover;
+background-repeat: no-repeat;
+">
+
+
+<div class="container main py-5 ">
+
+    <div th:replace="~{administrator/admin_header :: dashboard_topbar}"></div>
+
+    <div class="row px-3 mt-3 mx-auto">
+
+        <div class="col-lg-3 dash-navigation-container">
+            <div th:replace="~{administrator/admin_header :: dashboard_menu}"></div>
+        </div>
+
+        <div class="col right-side p-4 rounded">
+
+            <h3 class="text-white mb-4">
+                <b>Generate</b> <span class="fw-lighter">Reports</span>
+            </h3>
+            <div class="row px-2 text-light">
+
+                <p class="">Fetch users according to the date range</p>
+                <form action="generate-report" method="POST">
+
+                    <div class="d-flex">
+
+                        <div class="form-group mb-3 me-3 w-50">
+                            <label for="start-date">Start Date : </label>
+                            <input type="date" id="start-date" th:name="startDate" class="form-control" required>
+                        </div>
+
+                        <div class="form-group mb-3 w-50">
+                            <label for="start-date">End Date : </label>
+                            <input type="date" id="end-date" th:name="endDate" class="form-control" required>
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-danger">Find All User</button>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <!-- RIGHT SIDE -->
+
+
+    <div th:replace="~{administrator/admin_footer :: dashboard_footer}"></div>
+
+
+</div>
+
+
+<!--<%-->
+<!--String msg = (String) request.getAttribute("errMsg");-->
+<!--if (msg != null) {-->
+<!--%>-->
+
+<!--<script type="text/javascript">-->
+
+<!--		let msg = `<%=msg%>`;-->
+
+<!--		Swal.fire(-->
+<!--			'no users found ?',-->
+<!--			'make sure you fill the proper date range !',-->
+<!--			'question'-->
+<!--		)-->
+
+
+
+<!--</script>-->
+
+<!--<%-->
+<!--}-->
+<!--%>-->
+
+
+</body>
+</html>
+

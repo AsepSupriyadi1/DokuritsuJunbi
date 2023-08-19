@@ -1,0 +1,67 @@
+
+<div th:each="thread : ${allThreads}">
+    <div class="bg-light px-3 py-4 rounded my-2">
+
+        <div
+                class="px-3 pb-3 d-flex align-items-center justify-content-between flex-nowrap border-bottom border-1">
+            <div class="my-s-profile">
+                <h1><span>S</span><span>R</span></h1>
+            </div>
+            <div style="width: 75%;">
+                <h6 class="m-0">[[${thread.getUserApp().getUserAppDetails().getFirstName() + ' ' +
+                    thread.getUserApp().getUserAppDetails().getLastName()}]]</h6>
+                <p class="m-0 p-0">Software Engineering</p>
+            </div>
+            <div class="text-end" style="width: 5%;">
+                <i class="fa-solid fa-ellipsis-vertical"></i>
+            </div>
+        </div>
+
+
+        <div class="p-2 mt-3">
+            <div class="p-3 py-0">
+                <div th:if="${thread.getPostImageDataBase64().length() != 0}">
+                    <img th:src="'data:image/png;base64,' + ${thread.getPostImageDataBase64()}"
+                         alt="PostImage" style="width: 100%">
+                </div>
+                <p class="pt-3 m-0">
+                    [[${thread.getDescription()}]]
+                </p>
+                <p class="p-0 pt-2 m-0 text-end text-secondary" style="font-size: 12px;">
+                    [[${thread.getDatetime()}]]
+                </p>
+            </div>
+
+
+            <div class="py-2 m-0 border-top border-1 mt-3 d-flex align-items-center ">
+
+                <div class="me-3">
+                    <div class="thumbs" th:onclick="'handleLike(' + ${thread.getPostId()} + ')'">
+                        <i class="fa-regular fa-thumbs-up pe-1 fs-5 iconLike"></i>
+                        <span class="totalLikes">100</span>
+                    </div>
+
+                    <div class="thumbsUp d-none"
+                         th:onclick="'handleLike(' + ${thread.getPostId()} + ')'">
+                        <i class="fa-solid fa-thumbs-up fs-5 pe-1 iconLike"
+                           style="color: rgb(0, 72, 255);"></i>
+                        <span class="totalLikes">100</span>
+                    </div>
+                </div>
+
+                <div>
+                    <i class="fa-regular fa-comment pe-1 fs-5"></i>
+                    Comment
+                </div>
+
+            </div>
+
+
+            <div class="py-2 m-0 border-top border-1 mt-3 d-flex align-items-center">
+
+                this is cocmment
+
+            </div>
+        </div>
+    </div>
+</div>

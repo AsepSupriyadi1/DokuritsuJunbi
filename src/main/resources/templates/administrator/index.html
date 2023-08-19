@@ -1,0 +1,83 @@
+<!doctype html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="~{administrator/admin_source :: dashboard_source}"></head>
+
+
+<body style="
+background: url(img/bg-01.jpg);
+min-height: 100vh;
+background-color: #25364ca9;
+background-blend-mode: color-burn;
+background-position: center;
+background-size: cover;
+background-repeat: no-repeat;
+">
+
+
+<div class="container main py-5 " >
+
+
+
+
+    <div th:replace="~{administrator/admin_header :: dashboard_topbar}"></div>
+
+    <div class="row px-3 mt-3 mx-auto">
+
+        <div class="col-lg-3 dash-navigation-container" >
+            <div th:replace="~{administrator/admin_header :: dashboard_menu}"></div>
+        </div>
+
+        <div class="col-lg right-side p-4 rounded">
+
+            <h3 class="text-white mb-4">
+                <b>ABC JOBS</b> <span class="fw-lighter">DASHBOARD</span>
+            </h3>
+            <div class="row d-flex px-2">
+
+                <div class="col-lg-4 dash-card p-3 d-flex justify-content-between align-items-center me-3 rounded">
+                    <div>
+                        <h1>-</h1>
+                        <h5>Users</h5>
+                    </div>
+
+                    <div class="icon">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-4 dash-card p-3 d-flex justify-content-between align-items-center me-3 rounded">
+                    <div>
+                        <h1>-</h1>
+                        <h5>Jobs</h5>
+                    </div>
+                    <div class="icon">
+                        <i class="fa-sharp fa-solid fa-briefcase"></i>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-3 dash-card p-3 d-flex justify-content-between align-items-center me-3 rounded">
+                    <div>
+                        <h1>-</h1>
+                        <h5>Company</h5>
+                    </div>
+                    <div class="icon">
+                        <i class="fa-solid fa-building"></i>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div th:replace="~{administrator/admin_footer :: dashboard_footer}"></div>
+</div>
+</body>
+</html>
+
+

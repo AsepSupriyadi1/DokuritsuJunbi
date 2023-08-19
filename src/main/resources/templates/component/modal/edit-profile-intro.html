@@ -1,0 +1,108 @@
+
+<!-- EDIT SECTION -->
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<div class="popup pt-5 p-3" id="edit-modal" th:fragment="modals_editProfileIntro">
+
+	<div class=" d-flex flex-column align-items-center popup-content">
+
+		<div class="shadow col-md-5 p-4 bg-light popup-content"
+			style="border-radius: 10px; height: 85vh;">
+
+			<div class="row">
+
+				<div
+					class="col-12 d-flex justify-content-between border-bottom border-1">
+					<h3 class="text-dark fw-bold mb-3">Edit Profile Intro</h3>
+					<i id="close-edit"
+						class="shrink fs-1 fa-sharp fa-regular fa-circle-xmark"></i>
+				</div>
+
+
+				<div class="col-12">
+				
+				<form action="update-profile" method="post" class="p-4" th:object="${userDetails}">
+				
+						
+						<div class="row justify-content-between">
+							<div
+								class="form-group mb-4 p-1 flex-column justify-content-center flex-lg-row d-flex align-items-center">
+								<img src="img/profile.jpg" alt="" class="rounded-pill" width="100">
+								<input type="file" class="form-control inp-txt-light m-2" name="img">
+							</div>
+						</div>
+
+						<div class="row d-flex justify-content-between">
+							<div class="form-group mb-1 p-1">
+								<label for="firstName" class="ps-1 pb-2">First Name*</label>
+								<input type="text" class="form-control inp-txt-light p-2 ps-3"
+									name="firstName" th:value="${firstName}" th:field="*{firstName}" id="firstName" required>
+							</div>
+						</div>
+
+						<div class="row d-flex justify-content-between">
+							<div class="form-group mb-1 p-1">
+								<label for="lastName" class="ps-1 pb-2">Last Name*</label> <input
+									type="text" class="form-control inp-txt-light p-2 ps-3"
+									name="lastName" th:value="${lastName}" th:field="*{lastName}" id="lastName" required>
+							</div>
+						</div>
+						
+						<div class="row d-flex justify-content-between">
+							<div class="form-group mb-1 p-1">
+								<label for="headline" class="ps-1 pb-2">Headline*</label> <input
+									type="text" class="form-control inp-txt-light p-2 ps-3"
+									placeholder="I'm a Programer" name="headline" th:value="${headline}"  th:field="*{headline}"  id="headline">
+							</div>
+						</div>
+
+
+
+					<div class="row mb-1" style="width: 60%;">
+						<label for="country" class="ps-2 pb-2">City*</label>
+						<div class="form-group p-1">
+							<select class="form-select" name="country" id="country" th:field="*{country}">
+								<option value="Indonesia" th:selected="${country == 'Indonesia'}">Indonesia</option>
+								<option value="Singapore" th:selected="${country == 'Singapore'}">Singapore</option>
+								<option value="India" th:selected="${country == 'India'}">India</option>
+								<option value="Philippines" th:selected="${country == 'Philippines'}">Philippines</option>
+							</select>
+						</div>
+					</div>
+
+
+
+					<div class="row d-flex justify-content-between">
+							<div class="form-group mb-1 p-1">
+								<label for="about" class="ps-1 pb-2">About*</label> <br>
+								<textarea class="form-control" name="about" th:field="*{about}" id="about" cols="50" rows="10">[[${about}]]</textarea>
+							</div>
+						</div>
+
+
+						<div class="row d-flex justify-content-between">
+							<div class="form-group mb-1 p-1">
+								<button class="btn btn-primary rounded-pill p-2 w-50" type="submit">SAVE</button>
+							</div>
+						</div>
+				
+				
+				</form>
+
+					
+
+				
+
+				</div>
+
+
+
+
+
+
+			</div>
+
+		</div>
+	</div>
+
+</div>

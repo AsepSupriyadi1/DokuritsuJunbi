@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<div th:replace="~{fragment/head :: html_head}"></div>
+
+<body>
+
+	<div th:replace="~{fragment/navbar :: my_navbar}"></div>
+
+	<div class="container-fluid" style="background-color: rgb(221, 233, 244);">
+
+		<!-- MAIN RESULT -->
+		<div class="container py-5">
+			<div class="row p-1">
+				<h2 class="fw-bold mb-3 fs-4 p-3 border-bottom border-1">Showing Relevant
+					Result : </h2>
+
+				<div class="col-lg my-4">
+					<div class="p-4 rounded  border border-2 bg-light sidebar-min">
+						<small class="text-secondary">On This Page</small>
+						<ul class="list-group mt-3">
+							<li class="list-group-item"><a href="#peopleSection"><i class="fa fa-users pe-3"></i>
+									People</a></li>
+							<li class="list-group-item"> <a href="#jobSection"><i class="fa fa-briefcase pe-3"></i>
+									Jobs</a></li>
+						</ul>
+
+
+					</div>
+
+				</div>
+
+
+
+				<div class="col-lg-9 mx-auto ">
+
+
+
+					<!-- ------------------------------ PEOPLE SECTIONS ------------------------------------------- -->
+					<div th:if="${peopleResult.size() != 0}" class="my-4 p-4 rounded border border-2 bg-light"
+						id="peopleSection">
+
+
+						<h4 class="fw-bold text-secondary"><i class="fa fa-users pe-2"></i> People</h4>
+
+
+						<div th:each="user : ${peopleResult}"
+							class="row d-flex justify-content-between align-items-lg-end border-bottom border-2 pt-4 pb-4  m-2">
+							<div
+								class="col-lg-5 d-flex align-items-center p-0 justify-content-center justify-content-lg-start">
+								<!-- <img src="img/p.jpg" alt="img" class="rounded-pill small-profile"> -->
+								<div class="my-sm-profile">
+									<h1><span>[[${user.getFirstName().charAt(0)}]]</span><span>[[${user.getLastName().charAt(0)}]]</span>
+									</h1>
+								</div>
+
+								<div class="ms-3 mb-3 mt-2">
+									<h4 class="m-0 fs-5">[[${user.getFirstName() + " " + user.getLastName()}]]</h4>
+									<p class="m-0">[[${user.getHeadline()}]]</p>
+									<p class="m-0 lh-1 text-primary">[[${user.getCountry()}]]</p>
+								</div>
+							</div>
+
+							<!-- spacer in mobile -->
+							<div class="mt-2 mb-2 d-block d-lg-none"></div>
+
+							<div
+								class="col-lg-4 text-lg-end text-center p-0 d-flex justify-content-lg-end justify-content-center">
+								<button class="btn border-primary border-2 text-primary me-3"><span class="pe-3">
+										<i class="fa-solid fa-user-plus text-primary"></i>
+									</span>Connect</button>
+								<form action="user" method="GET">
+									<input type="hidden" th:name="firstName" th:value="${user.getFirstName()}">
+									<input type="hidden" th:name="lastName" th:value="${user.getLastName()}">
+									<button type="submit" class="btn btn-outline-info ms-auto">View Profile</button>
+								</form>
+							</div>
+						</div>
+
+
+					</div>
+					<!-- ------------------------------ END OF PEOPLE SECTIONS ------------------------------------------- -->
+
+					<!-- -------------------------------- JOBS SECTION --------------------------------------------- -->
+					<div th:if="${jobsResult.size() != 0}" class="my-4 p-4 rounded border border-2 bg-light"
+						id="jobSection">
+
+						<h4 class="fw-bold text-secondary"><i class="fa fa-briefcase pe-2"></i> Jobs</h4>
+
+						<div th:each="job : ${jobsResult}"
+							class="row d-flex justify-content-between align-items-lg-end border-bottom border-2 pt-4 pb-4  m-2">
+							<div
+								class="col-lg d-flex align-items-center p-0 justify-content-center justify-content-lg-start">
+
+								<div class="company-profile">
+									<img th:src="'data:image/png;base64,' + ${job.getCompany().getCompanyLogoBase64()}"
+										alt="img" style="width: 75px; height: 75px; object-fit: cover;" class="rounded">
+								</div>
+
+								<div class="ms-3 mb-3 mt-2">
+									<h4 class="m-0 fs-5">[[${job.getJobTitle()}]]</h4>
+									<p class="m-0">[[${job.getCompany().getCompanyName()}]]</p>
+									<p class="m-0 lh-1 text-primary">[[${job.getCompany().getCountry()}]]</p>
+								</div>
+							</div>
+
+							<!-- spacer in mobile -->
+							<div class="mt-2 mb-2 d-block d-lg-none"></div>
+
+							<div class="col-lg-4 text-lg-end text-center p-0">
+
+								<form action="job" method="GET">
+									<input type="hidden" name="jobId" th:value="${job.getJobPostId()}">
+									<button type="submit" class="btn btn-outline-primary ms-auto">View Details</button>
+								</form>
+							</div>
+						</div>
+
+					</div>
+					<!-- -------------------------------- END OF JOBS SECTION --------------------------------------------- -->
+
+
+
+					<!-- -------------------------------- NO RESULT SECTION --------------------------------------------- -->
+					<div th:if="${jobsResult.size() == 0 && peopleResult.size() == 0}" class="col-12 my-4 ">
+						<div class="text-center px-4 py-5  rounded border border-2 bg-light">
+							<h4 class="fw-bold text-secondary">No Results Found </h4>
+							<p>Try shortening or rephrasing your search.</p>
+							<img src="img/confuse.png" alt="" class="w-50">
+						</div>
+
+					</div>
+					<!-- -------------------------------- END OF NO RESULT SECTION --------------------------------------------- -->
+
+
+				</div>
+
+			</div>
+
+		</div>
+
+
+	</div>
+
+	<div th:replace="~{component/footer :: html_footer}"></div>
+</body>
+
+</html>

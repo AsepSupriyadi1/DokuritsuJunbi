@@ -1,0 +1,210 @@
+.img-container {
+
+    width: 100%;
+    height: 300px;
+
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0 0 40px 40px;
+}
+
+
+.profile-rs {
+    width: 40px;
+    height: 40px;
+    background-color: rgb(244, 244, 244);
+    padding: 5px;
+    object-fit: contain;
+    border: 1px solid rgb(190, 190, 190);
+}
+
+
+.profile-img {
+    width: 170px;
+    height: 170px;
+    margin-top: -80px;
+    object-fit: cover;
+    background-color: white;
+    padding: 5px;
+    box-shadow: 1px 0px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+
+.small-profile {
+    width: 75px;
+    height: 75px;
+    border: 2px solid rgb(26, 144, 213);
+    object-fit: cover;
+    padding: 2px;
+}
+
+
+.popup {
+    z-index: 100;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.705);
+    /* display: none; */
+}
+
+
+.popup-content {
+    overflow-y: auto;
+
+    animation: scale-up-center .4s cubic-bezier(.39, .575, .565, 1.000) both;
+}
+
+.popup-content::-webkit-scrollbar {
+    width: 1px;
+}
+
+
+.profile-popup {
+    position: fixed;
+    top: 70px;
+    z-index: 1;
+    display: none;
+    right: 20px;
+    width: 15vw;
+    background-color: white;
+    text-align: center;
+    padding: 20px;
+    border-radius: 0 0 20px 20px;
+    animation: slide-bottom .1s cubic-bezier(.25, .46, .45, .94) both;
+    overflow-y: hidden;
+}
+
+
+
+
+
+
+
+
+
+
+
+.my-profile {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    background-color: rgb(73, 73, 238);
+    margin-top: -80px;
+    line-height: none;
+    border: 5px solid white;
+    box-shadow: 1px 0px 5px 0px rgba(0, 0, 0, 0.75);
+
+}
+
+.my-profile h1 {
+
+    color: white;
+    font-size: 3.5em;
+
+}
+
+
+.my-sm-profile {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 67px;
+    height: 65px;
+    border-radius: 100%;
+    background-color: rgb(16, 138, 231);
+    border: 3px solid rgb(255, 255, 255);
+    box-shadow: 1px 0px 5px 0px rgba(0, 0, 0, 0.75);
+
+}
+
+
+.my-sm-profile h1 {
+
+    margin-top: 3px;
+    color: white;
+    font-size: 1.3em;
+
+}
+
+
+
+
+
+.small-profile {
+    width: 75px;
+    height: 75px;
+    border: 2px solid rgb(26, 144, 213);
+    object-fit: cover;
+    padding: 2px;
+}
+
+
+
+
+
+
+
+@keyframes slide-bottom {
+    0% {
+        height: 100px;
+    }
+
+    20% {
+        height: 100px;
+    }
+
+    40% {
+        height: 150px;
+    }
+
+    60% {
+        height: 200px;
+    }
+
+    100% {
+        height: max-content;
+    }
+}
+
+
+@keyframes scale-up-center {
+    0% {
+        transform: scale(.5)
+    }
+
+    100% {
+        transform: scale(1)
+    }
+}
+
+
+
+
+@media only screen and (max-width: 600px) {
+    .img-container {
+
+        width: 100%;
+        height: 250px;
+
+    }
+
+    .profile-img {
+        width: 200px;
+        height: 200px;
+        border: 5px solid white;
+        margin-top: -120px;
+        object-fit: cover;
+    }
+}

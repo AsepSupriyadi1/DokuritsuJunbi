@@ -1,0 +1,219 @@
+<!doctype html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="~{administrator/admin_source :: dashboard_source}"></head>
+
+<body style="
+background: url(img/bg-01.jpg);
+min-height: 100vh;
+background-color: #25364ca9;
+background-blend-mode: color-burn;
+background-position: center;
+background-size: cover;
+background-repeat: no-repeat;
+">
+
+
+    <div class="container main py-5 ">
+
+        <div th:replace="~{administrator/admin_header :: dashboard_topbar}"></div>
+
+        <div class="row px-3 mt-3 mx-auto">
+
+            <div class="col-lg-3 dash-navigation-container">
+                <div th:replace="~{administrator/admin_header :: dashboard_menu}"></div>
+            </div>
+
+
+            <!-- RIGHT SIDE -->
+            <div class="col right-side p-4 rounded">
+
+
+                <h3 class="text-white mb-3">Add a <b>Company</b></h3>
+                <div class="row">
+
+
+                    <form th:action="@{/saveJob}" method="POST" th:object="${companyRequestDto}"
+                        enctype="multipart/form-data">
+
+                        <div class="my-4">
+                            <div class="row gx-2">
+                                <div class="col-6">
+                                    <div class="form-group mb-3 text-light">
+                                        <label for="companyName" class="mb-2">Company Name: </label>
+                                        <input type="text" id="companyName" name="companyName" class="form-control"
+                                            placeholder="Enter the company name..." th:field="*{companyName}">
+                                    </div>
+                                </div>
+
+
+
+                                <div class="col-6">
+                                    <div class="form-group mb-3 text-light">
+                                        <label for="companyField" class="mb-2">Company's field : </label>
+                                        <select name="companyField" id="companyField" th:field="*{companyField}"
+                                            class="form-control">
+                                            <option value="Computer Software">Computer Software</option>
+                                            <option value="Telecommunications">Telecommunications</option>
+                                            <option value="Information Technology & Services">Information Technology &
+                                                Services</option>
+                                            <option value="Financial Services">Financial Services</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group mb-3 text-light">
+                                <label for="companyCountry" class="mb-2">Company Country: </label>
+                                <select name="companyCountry" id="companyCountry" th:field="*{companyCountry}"
+                                    class="form-control">
+                                    <option value="Indonesia">Indonesia</option>
+                                    <option value="Singapura">Singapura</option>
+                                    <option value="Malaysia">Malaysia</option>
+                                    <option value="Philiphines">Philiphines</option>
+                                </select>
+                            </div>
+
+
+
+                            <div class="row gx-3 d-flex align-items-start">
+
+
+                                <div class="col-6">
+
+
+
+                                    <div class="form-group mb-3 text-light">
+                                        <label for="companyAddress" class="mb-2">Company's Address : </label>
+                                        <textarea name="companyAddress" id="companyAddress" th:field="*{companyAddress}"
+                                            rows="8" class="form-control"
+                                            placeholder="Enter the company's address..."></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="col-6">
+
+                                    <div class="form-group mb-3 text-light">
+                                        <label for="companyAddress" class="mb-2">Company's Logo : </label>
+                                        <div class="my-1">
+                                            <img id="output" style="width: 45%; height: 180px; object-fit: cover;"
+                                                src="img/defaultCompany.png" />
+                                        </div>
+
+                                        <input type="file" accept="image/*" class="form-control"
+                                            th:field="*{companyLogo}" onchange="loadFile(event)">
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary w-100">Submit</button>
+                        </div>
+
+                    </form>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+        <div th:replace="~{administrator/admin_footer :: dashboard_footer}"></div>
+
+
+    </div>
+
+
+
+    <script type="text/javascript">
+        const loadFile = (event) => {
+            let output = document.getElementById('output');
+            output.src = URL.createObjectURL(event.target.files[0]);
+            output.onload = function () {
+                URL.revokeObjectURL(output.src) // free memory
+            }
+        };
+    </script>
+
+
+    <!--<script type="text/javascript">-->
+
+    <!--let logoutbtn = document.querySelectorAll(".delete");-->
+
+
+    <!--logoutbtn.forEach(function(element, index){-->
+
+    <!--	element.addEventListener("click", function() {-->
+    <!--		-->
+    <!--		-->
+    <!--		let iduser = element.id;-->
+    <!--				-->
+    <!--		Swal.fire({-->
+    <!--			-->
+    <!--			  title: 'Delete Confirmation',-->
+    <!--			  text: "Are you sure want to delete this Users " + iduser + " ?",-->
+    <!--			  icon: 'warning',-->
+    <!--			  showCancelButton: true,-->
+    <!--			  confirmButtonColor: '#3085d6',-->
+    <!--			  cancelButtonColor: '#d33',-->
+    <!--			  confirmButtonText: 'Yes'-->
+    <!--			}).then((result) => {-->
+    <!--			  if (result.isConfirmed) {-->
+    <!--				  document.location.href = "delete/"+ iduser;-->
+    <!--			  }-->
+    <!--		}) -->
+    <!--		-->
+    <!--	})-->
+    <!--		-->
+    <!--	-->
+    <!--})-->
+    <!--		-->
+    <!--</script>-->
+
+
+    <!--<%-->
+    <!--String msg = (String) request.getAttribute("success");-->
+    <!--if (msg != null) {-->
+    <!--%>-->
+
+    <script type="text/javascript" th:if="${success == 'true'}">
+
+        Swal.fire({
+            position: 'center',
+            padding: '3em',
+            icon: 'Success',
+            title: 'Message sent successfully',
+            text: msg,
+            showConfirmButton: false,
+            timer: 1500
+        })
+
+
+
+    </script>
+
+    <script type="text/javascript" th:if="${success == 'false'}">
+
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!',
+        })
+
+
+
+    </script>
+
+
+</body>
+
+</html>

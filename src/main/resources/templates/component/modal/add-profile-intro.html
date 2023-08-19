@@ -1,0 +1,68 @@
+<!-- Modal -->
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+    <div th:fragment="modals_addProfileIntro" class="modal fade" id="add-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="false">
+        <div class="modal-dialog modal-lg  modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Add Profile Section</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+                </div>
+                <div class="modal-body">
+
+                    <div class="col-9 mx-auto pt-4 pb-4">
+                        <div class="row d-flex justify-content-evenly flex-wrap gy-3">
+
+                            
+                            <a data-bs-toggle="modal" data-bs-target="#add-licenses" class="text-decoration-none d-block col-lg-6  ">
+                                <div class="d-flex flex-column text-dark p-4 border border border-2 text-center rounded ">
+                                     <i class="fa-sharp fa-solid fa-certificate mb-3 shrink" style="font-size: 4em;"></i>
+                                    <h4>Lisences</h4>
+                                </div>
+                            </a> 
+                            
+                            
+                            
+                            <a data-bs-toggle="modal" data-bs-target="#add-education"  class="text-decoration-none d-block col-lg-6  ">
+                                <div class="d-flex flex-column text-dark p-4 border border border-2 text-center rounded">
+                                    <i class="fa-solid fa-school mb-3 shrink" style="font-size: 4em;"></i>
+                                    <h4>Education</h4>
+                                </div>
+                            </a> 
+                            
+                            
+                            <a data-bs-toggle="modal" data-bs-target="#add-experience" class="text-decoration-none d-block col-lg-6  ">
+                                <div
+                                    class="d-flex flex-column text-dark p-4 border border border-2 text-center rounded">
+                                    <i class="fa-sharp fa-solid fa-briefcase mb-3 shrink" style="font-size: 4em;"></i>
+                                    <h4>Experience</h4>
+                                </div>
+                            </a> 
+                            
+                            
+                            
+                            <a data-bs-toggle="modal" data-bs-target="#add-skill" class="text-decoration-none d-block col-lg-6  ">
+                                <div class="d-flex flex-column text-dark p-4 border border border-2 text-center">
+                                    <i class="fa-sharp fa-solid fa-code-branch mb-3 shrink" style="font-size: 4em;"></i>
+                                    <h4>Skill</h4>
+                                </div>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+

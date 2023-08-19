@@ -1,0 +1,168 @@
+<!doctype html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="~{administrator/admin_source :: dashboard_source}"></head>
+
+<body style="
+background: url(img/bg-01.jpg);
+min-height: 100vh;
+background-color: #25364ca9;
+background-blend-mode: color-burn;
+background-position: center;
+background-size: cover;
+background-repeat: no-repeat;
+">
+
+    <div class="container main py-5 ">
+
+
+        <div th:replace="~{administrator/admin_header :: dashboard_topbar}"></div>
+
+
+        <div class="row px-3 mt-3 mx-auto">
+
+
+            <div class="col-lg-3 dash-navigation-container">
+                <div th:replace="~{administrator/admin_header :: dashboard_menu}"></div>
+            </div>
+
+            <!-- RIGHT SIDE -->
+            <div class="col right-side p-4 rounded">
+
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h3 class="text-white m-0"><span class="fw-lighter">View All</span> <b>Applications</b> </h3>
+                </div>
+
+                <div class="row px-3">
+
+                    <div class="table-responsive p-0">
+
+                        <table class="table table-secondary table-striped table-hover my-table ">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">User Id</th>
+                                    <th scope="col">Job Id</th>
+                                    <th scope="col">Web Portfolio</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr th:if="${allApplications.size() != 0}"
+                                    th:each="a, applicationIndex : ${allApplications}">
+                                    <th class="align-middle">[[${applicationIndex.index + 1}]]</th>
+                                    <td class="align-middle">[[${a.getUserAppDetails().getUserDetailsId()}]]</td>
+                                    <td class="align-middle">[[${a.getJobPost().getJobPostId()}]]</td>
+                                    <td class="align-middle"><a th:href="${a.getWebPortfolioUrl}" target="_blank">Web
+                                            Portfolio URL</a>
+                                    </td>
+                                    <td class="align-middle" style="width: 45%;">
+
+
+                                        <button class=" btn mybtn-details" data-bs-toggle="modal"
+                                            th:data-bs-target="${'#detailModal' + a.getApplicationId()}"
+                                            id="modalBtn">Job
+                                            Details</button>
+
+
+                                        <!-- <a class="btn mybtn-success" th:href="@{'/edit-user/' + ${user.getUserId()}}">
+                                            <i class="fa-solid fa-pen-to-square pe-3"></i>Edit
+                                        </a>
+
+
+                                        <a class="btn mybtn-danger delete" id="${user.getUserId()}"><i
+                                                class="fa-solid fa-trash pe-3"></i>Delete User</a> -->
+
+                                    </td>
+
+                                </tr>
+
+                                <tr th:if="${allApplications.size() == 0}">
+                                    <th scope="row" colspan="6" class="text-center" style="font-size: 13px;">There is no
+                                        Applications yet</th>
+                                </tr>
+
+
+                            </tbody>
+                        </table>
+
+                        <div th:each="app : ${allApplications}">
+
+                            <div class="modal fade" th:id="${'detailModal' + app.getApplicationId()}" tabindex="-1"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content bg-dark text-white">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel8">Company Details</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <div>
+                                                <div class="text-center">
+                                                    <p class="m-0 p-0 mb-3 py-3 bg-light text-dark">- Application
+                                                        Details -</p>
+                                                </div>
+
+                                                <table class="table text-light">
+                                                    <tbody>
+
+                                                        <tr>
+                                                            <th>Full Name :</th>
+                                                            <td>[[${app.getUserAppDetails().getFirstName() + " " +
+                                                                app.getUserAppDetails().getLastName()}]]</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Job Title :</th>
+                                                            <td>[[${app.getJobPost().getJobTitle()}]]</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Company Name : </th>
+                                                            <td>[[${app.getJobPost().getCompany().getCompanyName()}]]
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Date :</th>
+                                                            <td>[[${app.getTimeAgo()}]]</td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+
+
+
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <div th:replace="~{administrator/admin_footer :: dashboard_footer}"></div>
+
+    </div>
+
+
+</body>
+
+</html>

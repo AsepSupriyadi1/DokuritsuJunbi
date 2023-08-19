@@ -1,0 +1,211 @@
+<!doctype html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="~{administrator/admin_source :: dashboard_source}"></head>
+
+<body style="
+background: url(img/bg-01.jpg);
+min-height: 100vh;
+background-color: #25364ca9;
+background-blend-mode: color-burn;
+background-position: center;
+background-size: cover;
+background-repeat: no-repeat;
+">
+
+    <div class="container main py-5 ">
+
+
+        <div th:replace="~{administrator/admin_header :: dashboard_topbar}"></div>
+
+
+        <div class="row px-3 mt-3 mx-auto">
+
+
+            <div class="col-lg-3 dash-navigation-container">
+                <div th:replace="~{administrator/admin_header :: dashboard_menu}"></div>
+            </div>
+
+            <!-- RIGHT SIDE -->
+            <div class="col right-side p-4 rounded">
+
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h3 class="text-white m-0"><span class="fw-lighter">View All</span> <b>Jobs Posted</b> </h3>
+                    <a href="/add-job" class="btn btn-primary">Post a Job <i class="ps-2 fa fa-plus"></i></a>
+                </div>
+
+                <div class="row px-3">
+
+                    <div class="table-responsive p-0">
+
+                        <table class="table table-secondary table-striped table-hover my-table ">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">jobID</th>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Company Name</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr th:if="${allJobPosted != 'empty'}" th:each="job, jobIndex : ${allJobPosted}">
+                                    <th class="align-middle">[[${jobIndex.index + 1}]]</th>
+                                    <td class="align-middle">[[${job.getJobPostId()}]]</td>
+                                    <td class="align-middle">[[${job.getJobTitle()}]]</td>
+                                    <td class="align-middle">[[${job.getCompany().getCompanyName()}]]</td>
+                                    <td class="align-middle" style="width: 45%;">
+
+
+                                        <button class=" btn mybtn-details" data-bs-toggle="modal"
+                                            th:data-bs-target="${'#detailModal' + job.getJobPostId()}" id="modalBtn">Job
+                                            Details</button>
+
+
+                                        <!-- <a class="btn mybtn-success" th:href="@{'/edit-user/' + ${user.getUserId()}}">
+                                            <i class="fa-solid fa-pen-to-square pe-3"></i>Edit
+                                        </a>
+
+
+                                        <a class="btn mybtn-danger delete" id="${user.getUserId()}"><i
+                                                class="fa-solid fa-trash pe-3"></i>Delete User</a> -->
+
+                                    </td>
+
+                                </tr>
+
+                                <tr th:if="${allJobPosted == 'empty'}">
+                                    <th scope="row" colspan="6" class="text-center" style="font-size: 13px;">There is no
+                                        Job posted yet</th>
+                                </tr>
+
+
+                            </tbody>
+                        </table>
+
+                        <div th:each="job : ${allJobPosted}">
+
+                            <div class="modal fade" th:id="${'detailModal' + job.getJobPostId()}" tabindex="-1"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content bg-dark text-white">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel8">Company Details</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <img th:if="${job.getCompany.getCompanyLogoBase64().length() != 0}"
+                                                th:src="'data:image/png;base64,' + ${job.getCompany().getCompanyLogoBase64()}"
+                                                alt="companyLogo" class="mb-5" style="width: 100%; height: auto;">
+
+                                            <div>
+                                                <div class="text-center">
+                                                    <p class="m-0 p-0 mb-3 py-3 bg-light text-dark">- Job
+                                                        Details -</p>
+                                                </div>
+
+                                                <table class="table text-light">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Job Title :</th>
+                                                            <td>[[${job.getJobTitle()}]]</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Job Type :</th>
+                                                            <td>[[${job.getJobType()}]]</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Company Name :</th>
+                                                            <td>[[${job.getCompany().getCompanyName()}]]</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Country : </th>
+                                                            <td>[[${job.getCompany().getCompanyAddress()}]]</td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+
+
+                                                <div class="text-center my-3">
+                                                    <p class="m-0 p-0 mb-3 py-3 bg-light text-dark">- Job
+                                                        Responsibilites -</p>
+                                                </div>
+
+                                                <div class="bg-white p-3" style="height: 200px; overflow-y: auto;">
+                                                    <p class="text-secondary">[[${job.getJobDesc()}]]</p>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <div th:replace="~{administrator/admin_footer :: dashboard_footer}"></div>
+
+    </div>
+
+
+
+
+    <!--<script type="text/javascript">-->
+
+    <!--let logoutbtn = document.querySelectorAll(".delete");-->
+
+
+    <!--logoutbtn.forEach(function(element, index){-->
+
+    <!--	element.addEventListener("click", function() {-->
+
+
+    <!--		let iduser = element.id;-->
+
+    <!--		Swal.fire({-->
+
+    <!--			  title: 'Delete Confirmation',-->
+    <!--			  text: "Are you sure want to delete this Users " + iduser + " ?",-->
+    <!--			  icon: 'warning',-->
+    <!--			  showCancelButton: true,-->
+    <!--			  confirmButtonColor: '#3085d6',-->
+    <!--			  cancelButtonColor: '#d33',-->
+    <!--			  confirmButtonText: 'Yes'-->
+    <!--			}).then((result) => {-->
+    <!--			  if (result.isConfirmed) {-->
+    <!--				  document.location.href = "delete/"+ iduser;-->
+    <!--			  }-->
+    <!--		})-->
+
+    <!--	})-->
+
+
+    <!--})-->
+
+    <!--</script>-->
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,194 @@
+<!doctype html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="~{administrator/admin_source :: dashboard_source}"></head>
+<body style="
+background: url(img/bg-01.jpg);
+min-height: 100vh;
+background-color: #25364ca9;
+background-blend-mode: color-burn;
+background-position: center;
+background-size: cover;
+background-repeat: no-repeat;
+">
+
+<div class="container main py-5 ">
+
+
+    <div th:replace="~{administrator/admin_header :: dashboard_topbar}"></div>
+
+
+    <div class="row px-3 mt-3 mx-auto">
+
+
+        <div class="col-lg-3 dash-navigation-container">
+            <div th:replace="~{administrator/admin_header :: dashboard_menu}"></div>
+        </div>
+
+        <!-- RIGHT SIDE -->
+        <div class="col right-side p-4 rounded">
+
+            <h3 class="text-white mb-4">
+                <span class="fw-lighter">View All</span> <b>Users</b>
+            </h3>
+            <div class="row px-3">
+
+                <div class="table-responsive p-0">
+
+                    <table
+                            class="table table-secondary table-striped table-hover my-table ">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">uID</th>
+                            <th scope="col">Full Name</th>
+                            <th scope="col">Gmail</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        <tr th:each="user : ${users}">
+                            <th scope="row" style="font-size: 13px;"> 1</th>
+                            <td style="font-size: 10px;">[[${user.userId}]]</td>
+                            <td style="font-size: 13px;">[[${user.getUserAppDetails().getFirstName() + " " +
+                                user.getUserAppDetails().getLastName()}]]
+                            </td>
+                            <td style="font-size: 13px;">[[${user.email}]]</td>
+                            <td>-</td>
+                            <td style="width: 45%;">
+
+
+                                <button class=" btn mybtn-details" data-bs-toggle="modal"
+                                   th:data-bs-target="${'#detailModal' + user.getUserId()}" id="modalBtn">Details</button>
+
+
+                                <a class="btn mybtn-success" th:href="@{'/edit-user/' + ${user.getUserId()}}">
+                                    <i class="fa-solid fa-pen-to-square pe-3"></i>Edit
+                                </a>
+
+
+                                <a class="btn mybtn-danger delete" id="${user.getUserId()}"><i
+                                        class="fa-solid fa-trash pe-3"></i>Delete User</a>
+
+                            </td>
+
+                        </tr>
+
+
+                        </tbody>
+                    </table>
+
+
+                    <div th:each="user : ${users}">
+
+                        <div class="modal fade" th:id="${'detailModal' + user.getUserId()}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered ">
+                                <div class="modal-content bg-dark text-white">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel8">User Details</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <ol>
+                                            <li> FirstName : [[${user.getUserAppDetails().getFirstName()}]]</li>
+                                            <li> LastName : [[${user.getUserAppDetails().getLastName()}]]</li>
+                                            <li> Email : [[${user.getEmail()}]]</li>
+                                            <li> Country : [[${user.getUserAppDetails().getCountry()}]]</li>
+                                            <li> Headline : [[${user.getUserAppDetails().getHeadline()}]]</li>
+                                        </ol>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <div th:replace="~{administrator/admin_footer :: dashboard_footer}"></div>
+
+</div>
+
+
+
+
+<!--<script type="text/javascript">-->
+
+<!--let logoutbtn = document.querySelectorAll(".delete");-->
+
+
+<!--logoutbtn.forEach(function(element, index){-->
+
+<!--	element.addEventListener("click", function() {-->
+
+
+<!--		let iduser = element.id;-->
+
+<!--		Swal.fire({-->
+
+<!--			  title: 'Delete Confirmation',-->
+<!--			  text: "Are you sure want to delete this Users " + iduser + " ?",-->
+<!--			  icon: 'warning',-->
+<!--			  showCancelButton: true,-->
+<!--			  confirmButtonColor: '#3085d6',-->
+<!--			  cancelButtonColor: '#d33',-->
+<!--			  confirmButtonText: 'Yes'-->
+<!--			}).then((result) => {-->
+<!--			  if (result.isConfirmed) {-->
+<!--				  document.location.href = "delete/"+ iduser;-->
+<!--			  }-->
+<!--		})-->
+
+<!--	})-->
+
+
+<!--})-->
+
+<!--</script>-->
+
+
+
+
+<script type="text/javascript">
+
+		let modalsBtn = document.querySelector('#modalBtn');
+		console.log(modalsBtn);
+
+		fetch('http://localhost:8080/detail-user/1')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Request gagal: ' + response.status);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Data berhasil diambil, gunakan data sesuai kebutuhan Anda
+                    console.log(data);
+                })
+                .catch(error => {
+                    // Error handling jika request gagal atau terjadi masalah lainnya
+                    console.error('Terjadi kesalahan:', error.message);
+                });
+
+
+
+</script>
+
+
+</body>
+</html>
+
+

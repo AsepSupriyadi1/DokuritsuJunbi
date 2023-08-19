@@ -1,0 +1,27 @@
+:root {
+  --myblue: #0370A8;
+  --myblue-1: #0387cd;
+  --error: red;
+}
+
+
+.txt-myblue {
+	color: var(--myblue); 
+	color: #0370A8;
+}
+
+.btn-myblue {
+	background-color: var(--myblue); 
+	color: white; 
+}
+
+.btn-myblue:hover {
+	background-color: var(--myblue-1); 
+	color: #dfdfdf;
+}
+
+
+.bg-myblue {
+	background-color: var(--myblue); 
+}
+

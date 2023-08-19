@@ -1,0 +1,179 @@
+<!doctype html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="~{administrator/admin_source :: dashboard_source}"></head>
+
+<body style="
+background: url(img/bg-01.jpg);
+min-height: 100vh;
+background-color: #25364ca9;
+background-blend-mode: color-burn;
+background-position: center;
+background-size: cover;
+background-repeat: no-repeat;
+">
+
+
+    <div class="container main py-5 ">
+
+        <div th:replace="~{administrator/admin_header :: dashboard_topbar}"></div>
+
+        <div class="row px-3 mt-3 mx-auto">
+
+            <div class="col-lg-3 dash-navigation-container">
+                <div th:replace="~{administrator/admin_header :: dashboard_menu}"></div>
+            </div>
+
+
+            <!-- RIGHT SIDE -->
+            <div class="col right-side p-4 rounded">
+
+
+                <h3 class="text-white mb-3">Post a <b>Job</b></h3>
+                <div class="row">
+
+                    <p class="text-light">Post a Job opportunity to the portal</p>
+                    <form action="#" th:action="@{/save-job}" method="POST" th:object="${jobPostDto}">
+
+
+                        <span class="w-100 bg-light d-block py-2 text-center rounded">Job's Details</span>
+
+                        <div class="my-4">
+                            <div class="row gx-2">
+                                <div class="col-6">
+                                    <div class="form-group mb-3 text-light">
+                                        <label for="jobTitle" class="mb-2">Job Title : </label>
+                                        <input type="text" id="jobTitle" name="jobTitle" class="form-control"
+                                            placeholder="Enter the job title..." th:field="*{jobTitle}">
+                                    </div>
+                                </div>
+
+                                <div class="col-6">
+                                    <div class="form-group mb-3 text-light">
+                                        <label for="jobtype" class="mb-2">Job's type : </label>
+                                        <select name="jobtype" id="jobtype" class="form-control" th:field="*{jobType}">
+
+                                            <option value="FULL_TIME">Full Time</option>
+                                            <option value="PART_TIME">Part Time</option>
+                                            <option value="REMOTE">Remote</option>
+                                            <option value="FREELANCE">Freelance</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <div class="form-group mb-3 text-light">
+                                <label for="jobtype" class="mb-2">Company : </label>
+                                <select name="jobtype" id="jobtype" class="form-control" th:field="*{companyId}">
+                                    <option th:each="company : ${companies}" th:value="${company.getCompanyId()}">
+                                        [[${company.getCompanyName()}]]</option>
+                                </select>
+                            </div>
+
+
+                            <div class="form-group mb-3 text-light">
+                                <label for="jobdesc" class="mb-2">Job's Description : </label>
+                                <textarea name="jobdesc" id="jobdesc" cols="30" rows="5" class="form-control"
+                                    placeholder="Enter the job's description..." th:field="*{jobDesc}"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary w-100">Submit</button>
+                        </div>
+
+                    </form>
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+        <div th:replace="~{administrator/admin_footer :: dashboard_footer}"></div>
+
+
+    </div>
+
+
+
+    <!--<script type="text/javascript">-->
+
+    <!--let logoutbtn = document.querySelectorAll(".delete");-->
+
+
+    <!--logoutbtn.forEach(function(element, index){-->
+
+    <!--	element.addEventListener("click", function() {-->
+    <!--		-->
+    <!--		-->
+    <!--		let iduser = element.id;-->
+    <!--				-->
+    <!--		Swal.fire({-->
+    <!--			-->
+    <!--			  title: 'Delete Confirmation',-->
+    <!--			  text: "Are you sure want to delete this Users " + iduser + " ?",-->
+    <!--			  icon: 'warning',-->
+    <!--			  showCancelButton: true,-->
+    <!--			  confirmButtonColor: '#3085d6',-->
+    <!--			  cancelButtonColor: '#d33',-->
+    <!--			  confirmButtonText: 'Yes'-->
+    <!--			}).then((result) => {-->
+    <!--			  if (result.isConfirmed) {-->
+    <!--				  document.location.href = "delete/"+ iduser;-->
+    <!--			  }-->
+    <!--		}) -->
+    <!--		-->
+    <!--	})-->
+    <!--		-->
+    <!--	-->
+    <!--})-->
+    <!--		-->
+    <!--</script>-->
+
+
+    <!--<%-->
+    <!--String msg = (String) request.getAttribute("success");-->
+    <!--if (msg != null) {-->
+    <!--%>-->
+
+
+
+
+    <!-- <script type="text/javascript" th:if="${success == 'true'}">
+
+        Swal.fire({
+            position: 'center',
+            padding: '3em',
+            icon: 'Success',
+            title: 'Message sent successfully',
+            text: msg,
+            showConfirmButton: false,
+            timer: 1500
+        })
+
+
+
+    </script>
+
+    <script type="text/javascript" th:if="${success == 'false'}">
+
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!',
+        })
+
+
+
+    </script> -->
+
+
+</body>
+
+</html>

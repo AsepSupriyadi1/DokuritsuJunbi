@@ -1,0 +1,48 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+</head>
+<body>
+
+<h1 th:text="${flag}"></h1>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script type="text/javascript">
+
+
+
+
+
+
+<!--		if('${flag}' == 'showAlert') {-->
+<!--			-->
+<!--			let timerInterval-->
+<!--			Swal.fire({-->
+<!--			  title: 'To Infinity and Beyond!',-->
+<!--			  html: 'I will close in <b></b> milliseconds.',-->
+<!--			  timer: 1000,-->
+<!--			  timerProgressBar: true,-->
+<!--			  didOpen: () => {-->
+<!--			    Swal.showLoading()-->
+<!--			    const b = Swal.getHtmlContainer().querySelector('b')-->
+<!--			    timerInterval = setInterval(() => {-->
+<!--			      b.textContent = Swal.getTimerLeft()-->
+<!--			    }, 5)-->
+<!--			  },-->
+<!--			  willClose: () => {-->
+<!--			    clearInterval(timerInterval)-->
+<!--			  }-->
+<!--			}).then((result) => {-->
+<!--			  /* Read more about handling dismissals below */-->
+<!--			  if (result.dismiss === Swal.DismissReason.timer) {-->
+<!--				  document.location.href = "dashboard";-->
+<!--			  }-->
+<!--			})-->
+<!--			-->
+<!--		}-->
+		
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!doctype html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="~{administrator/admin_source :: dashboard_source}"></head>
+
+
+<body th:style="'
+    background: url(\'' + @{/img/bg-01.jpg} + '\');
+    min-height: 100vh;
+    background-color: #25364ca9;
+    background-blend-mode: color-burn;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;'
+">
+
+
+<div class="container main py-5 " >
+
+	<div th:replace="~{administrator/admin_header :: dashboard_topbar}"></div>
+
+	<div class="row px-3 mt-3 mx-auto">
+
+		<div class="col-lg-3 dash-navigation-container" >
+			<div th:replace="~{administrator/admin_header :: dashboard_menu}"></div>
+		</div>
+
+		<h1>asdfsdaf</h1>
+
+
+		</div>
+
+
+
+	<div th:replace="~{administrator/admin_footer :: dashboard_footer}"></div>
+
+</div>
+
+
+
+<script type="text/javascript">
+	$(document).ready(function () {
+
+		 $('.tab-container:first').show();
+	     $('.tab-nav-container button:first').addClass('tab-active');
+
+	     $('.tab-nav-container button').click(function (event) {
+
+	         index = $(this).index();
+	         $('.tab-nav-container button').removeClass('tab-active');
+	         $(this).addClass('tab-active');
+	         $('.tab-container').hide();
+	         $('.tab-container').eq(index).show();
+
+     });
+});
+</script>
+
+
+</body>
+
+
+</html>
+
+
+
+
+
+
+
+
