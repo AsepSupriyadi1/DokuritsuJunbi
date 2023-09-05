@@ -48,12 +48,12 @@
 						enter the confirmation code that we have sent
 					</p>
 					<%-- <%
-					String error_message = (String) request.getAttribute("message");
-					if (error_message != null) {
+                        String error_message = (String) request.getAttribute("message");
+                        if (error_message != null) {
 					%>
 					<div class="alert alert-danger" role="alert"><%=error_message%></div>
 					<%
-					}
+					    }
 					%> --%>
 				</div>
 

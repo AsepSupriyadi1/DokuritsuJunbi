@@ -116,6 +116,15 @@ public class UserAppService implements UserDetailsService {
         return userAppRepository.findById(userAppId).get();
     }
 
+    public UserApp findByEmail(String email){
+        return userAppRepository.findByEmail(email).get();
+    }
+
+
+    public void updatePassword(UserApp userApp){
+        userAppRepository.save(userApp);
+    }
+
 
 
 }

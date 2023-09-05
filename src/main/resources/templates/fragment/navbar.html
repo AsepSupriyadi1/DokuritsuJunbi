@@ -4,7 +4,7 @@
 <!-- HEADER -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom border-1" th:fragment="my_navbar">
         <div class="container-fluid ps-4 pe-4">
-                <a class="navbar-brand" href="dashboard"><img src="img/blue.png" alt="" width="120"></a>
+                <a class="navbar-brand" href="/feed"><img src="img/blue.png" alt="" width="120"></a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -17,21 +17,13 @@
                                         name="keyword">
                         </form>
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                                <li class="nav-item"><a class="nav-link" href="#"><i
+                                <li class="nav-item"><a class="nav-link" href="/feed"><i
                                                         class="fa-solid fa-house-chimney me-2 text-primary"></i>Home</a>
                                 </li>
-                                <li class="nav-item"><a class="nav-link" href="#"><i
-                                                        class="fa-solid fa-users me-2 text-primary"></i>My Network</a>
-                                </li>
-                                <li class="nav-item"><a class="nav-link" href="/job-feed"><i
+                                <li class="nav-item"><a class="nav-link" href="/jobs-feed"><i
                                                         class="fa-solid fa-briefcase me-2 text-primary"></i>Jobs</a>
                                 </li>
-                                <li class="nav-item"><a class="nav-link" href="#"><i
-                                                        class="fa-solid fa-message me-2 text-primary"></i>Message</a>
-                                </li>
-                                <li class="nav-item"><a class="nav-link" href="#"><i
-                                                        class="fa-solid fa-bell me-2 text-primary"></i>Notifications</a>
-                                </li>
+
                                 <li class="nav-item text-center d-lg-none d-block"><a href="profile"
                                                 class="btn border-primary border-2 text-primary rounded-pill text-decoration-none">View
                                                 Your Profile</a>

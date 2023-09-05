@@ -30,7 +30,7 @@ public class EmailAppService {
                 for(UserApp user : userAppList){
 
                     SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
-                    simpleMailMessage.setFrom("abcjobs@clouza.net");
+                    simpleMailMessage.setFrom("asepsupyad789@gmail.com");
                     simpleMailMessage.setSubject(subject);
                     simpleMailMessage.setTo(user.getEmail());
                     simpleMailMessage.setText(body);
@@ -40,10 +40,11 @@ public class EmailAppService {
                 }
             } else {
                 SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
-                simpleMailMessage.setFrom("abcjobs@clouza.net");
+                simpleMailMessage.setFrom("asepsupyad789@gmail.com");
                 simpleMailMessage.setSubject(subject);
                 simpleMailMessage.setTo(to);
                 simpleMailMessage.setText(body);
+
 
                 javaMailSender.send(simpleMailMessage);
             }

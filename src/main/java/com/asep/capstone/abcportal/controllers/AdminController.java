@@ -15,6 +15,8 @@ import com.asep.capstone.abcportal.services.JobAndCompanyService;
 import com.asep.capstone.abcportal.services.UserAppDetailService;
 import com.asep.capstone.abcportal.services.UserAppService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -56,9 +58,15 @@ public class AdminController {
 
 
     // -=-=-=-=-=-=-=-= DASHBOARD ADMIN CONTROLLER -=-=-=-=-=-=-=-=
-
     @GetMapping("/dashboard")
     public String index(){
+
+        UserApp userApp = userAppService.getCurrentUser();
+
+        if(userApp.getRole().name().equals("USER")){
+            throw new AccessDeniedException("");
+        }
+
         return "administrator/index";
     }
 

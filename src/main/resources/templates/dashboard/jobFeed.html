@@ -86,7 +86,9 @@
                                     <img src="img/defaultCompany.png" alt="companyLogo"
                                         style="height: 60px; width: 60px; object-fit: cover;">
                                     <div class="ps-3">
+                                        <a th:href="@{'/job?jobId=' + ${job.getJobPostId()}}" class="text-decoration-none text-dark">
                                         <h6 class="m-0">[[${job.getJobTitle()}]]</h6>
+                                        </a>
                                         <small class="text-primary fw-bold">[[${job.getCompany().getCompanyName()}]]</small>
                                     </div>
                                 </div>
@@ -114,7 +116,7 @@
                     </div>
 
                     <div class="col-lg-4" th:if="${allJobs == null}" th:each="job : ${searchedResult}">
-                        <a href="" class="text-decoration-none text-dark">
+                        <a th:href="@{'/job/jobId=' + ${job.getJobPostId()}}" class="text-decoration-none text-dark">
                             <div class=" bg-light border border- border-2  p-4 ">
 
 
@@ -122,7 +124,9 @@
                                     <img src="img/defaultCompany.png" alt="companyLogo"
                                          style="height: 60px; width: 60px; object-fit: cover;">
                                     <div class="ps-3">
-                                        <h6 class="m-0">[[${job.getJobTitle()}]]</h6>
+                                        <a th:href="@{'/job/jobId=' + ${job.getJobPostId()}}" class="text-decoration-none text-dark">
+                                            <h6 class="m-0">[[${job.getJobTitle()}]]</h6>
+                                        </a>
                                         <small class="text-primary fw-bold">[[${job.getCompany().getCompanyName()}]]</small>
                                     </div>
                                 </div>
